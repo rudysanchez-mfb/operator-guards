@@ -1,0 +1,91 @@
+{
+  "generated": "2026-11-10",
+  "server_source": {
+    "repo": "/home/rsanchez/hermes-operator-guards",
+    "branch": "main",
+    "head": "23effad465abd0cc2a709d59ec557dfe1e69d498",
+    "worktree": "clean",
+    "recent_commits": [
+      "23effad fix(deploy): seed ED-209 runtime rules at install; loud degraded state",
+      "0fa9a2c fix(r2d2): wire IPC policy check + recovery mutations; guard unsupported hooks; honest runtime evidence",
+      "56dd114 fix(deploy): working rollback/runbook commands + CLI launchers + drill cleanup",
+      "a7f5b5e test(drills): real drills + evidence + review provenance + deploy runbook",
+      "f93f853 fix(deploy): transactional install/rollback, symlink-safe copy, truthful unit stop, YAML-validated config writer"
+    ]
+  },
+  "deployed_release": {
+    "path": "/opt/hermes-operator-guards/releases/23effad465abd0cc2a709d59ec557dfe1e69d498",
+    "source_repo": "/home/rsanchez/hermes-operator-guards",
+    "commit": "23effad465abd0cc2a709d59ec557dfe1e69d498",
+    "archive_sha256": "36e6bfedd347573eb13757fcd14d2c291df6e5652ea23774299c73e081a910c4",
+    "source_file_count": 26,
+    "note": "The release contains pyproject.toml + src/ only. 22 of 26 files hash-match this publication; the 4 differences are the documented publication edits."
+  },
+  "release_hash_comparison": {
+    "matched": 22,
+    "modified_by_publication": [
+      "src/operator_guards/ed209/cli.py",
+      "src/operator_guards/ed209/ledger.py",
+      "src/operator_guards/ed209/state.py",
+      "src/operator_guards/r2d2/store.py"
+    ],
+    "added_by_publication": [
+      "src/operator_guards/common/paths.py",
+      "src/operator_guards/ed209/source_policy.py"
+    ]
+  },
+  "laptop_sources": {
+    "policy_module": {
+      "path": "/home/rsanchez/.claude/ed209/policy/ed209_policy.py",
+      "sha256": "02b31ba8c1f6ec7eccb417de59a9ab39213435d54e6aa506d94d23ff1a8c5b31",
+      "published_as": "src/operator_guards/ed209/source_policy.py",
+      "adaptation": "package-relative import; default store and transcript roots made configurable; default arguments changed from a bound STORE to None"
+    },
+    "policy_cli": {
+      "path": "/home/rsanchez/.claude/ed209/policy/policy_cli.py",
+      "sha256": "669519704abc27c43dc2708a57b0b3bd0f4948b94f6afb9f17ca63254bed5eda",
+      "copied": false,
+      "reason": "CLI is tied to the live policy store; the ported module is importable and tested directly"
+    },
+    "hooks_not_copied": {
+      "reason": "Harness-specific live hooks (Claude Code/Codex/Copilot/Cursor) and their runtime coupling are outside this Hermes-targeted publication; no hook source, transcript, database, or credential is copied",
+      "sha256": {
+        "ed209-codex-stop.py": "740174ea538a06907547008b9c72e70cdd808573806c75ae372a4372813473a4",
+        "ed209_copilot_events.py": "782511f06723db6f414dedf68257bb9bd05fc010c4edb076afe9d31ae361b737",
+        "ed209-copilot-stop.py": "fbb419c6997a16c64c0608003e8e497e20f263a1a6327c1589bce129569aae07",
+        "ed209-cursor-response.py": "ecfaf24b0ecc96c630b6ebbb2c814463d0f40849301588d78e0108ffddbd83c1",
+        "ed209-cursor-stop.py": "d5926bf590dfe801319d092c8c749bd85637b1a9fdf14619531467fd343995c0",
+        "ed209-harness.py": "8ce99fd2dd01e3d5b24ff74daea21ad304ba4bf40f852f7913773b8fecb1339a",
+        "ed209_lib.py": "31b1b6f9edf9c48af8c001515be070a4bce805df4efaab3a9621f828c96e663a",
+        "ed209_memfirst.py": "885c99e767a8cc063dc2ca45ce8e0bbcd72d9eb2b9dcc5f0ab0a5ec47e9a57b7",
+        "ed209_narration.py": "5a96ea48e758889d0e39c22fd553f78c6443d808179f32ccf1e56e5d78d403fb",
+        "ed209-pretool.py": "e14f1ab3e0749c43e327676c8fafb8c69b678a108b2e57afd72cac4d03e72e20",
+        "ed209_replymatch.py": "b3f34e39150b191fa037f67a53f70821b7a486b508df3034041d052f895a984d",
+        "ed209_reviewer_flags.py": "ec86b6ddf820c7a4c216c6a50b83b7beab6e381c662a4c6b43ca92cd3585a42e",
+        "ed209-stop.py": "b7901088007fcdf5897197b62145f6076e73536e743b491462361987a6e62196",
+        "ed209_turntext.py": "f4a37df1f5c66bfe273cce35fcde0520e3053ef53c693ba677c83f14b91afa78"
+      }
+    },
+    "r2d2_bin_not_copied": {
+      "reason": "The packaged Python library is the coordinated implementation; the live bin scripts (and backups) are not source for this publication",
+      "sha256": {
+        "r2d2_authz.py": "2bfabbfcf511cf41e577221112aed718b826f041d782ae1fa9ea6b77a041ecfa",
+        "r2d2_brain.py": "6a3e001ff4ce8f9820a6f2a14112264d13fbb380413913c23ac726140ab761a3",
+        "r2d2_exec.py": "340b96ed3cc804281bfdcc1f0c6d328842f26bbe522c2eb41c4ef6f5b4ab9a1b",
+        "r2d2_harnesses.py": "18d2483da5f553f9f5d573fda0adfd4fb85a6ed6a2ee9c5a1b57f7b7581f6146",
+        "r2d2_store.py": "d5d5e81d0c2c3c4139c973b661ff91a3f5305bd225bb69f6f7f4f42c61761410",
+        "r2d2_supervisor.py": "53094441d2346cfe279deb5698430fed9ae3941bbbc72cbd8c54eecf1fb72b25",
+        "tests/test_churn.py": "7418b48700b7102538b865674d18d2e893560b8cd1ab25e59a899140713ec54d"
+      }
+    }
+  },
+  "excluded": [
+    ".git/ and git history",
+    ".venv/, __pycache__/, .pytest_cache/",
+    "*.bak* backups",
+    "live policy artifacts and policy state",
+    "hit databases and incident stores",
+    "runtime state dirs, transcripts, source receipts",
+    "environment files, credentials, tokens, personal session logs"
+  ]
+}

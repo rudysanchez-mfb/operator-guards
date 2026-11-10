@@ -1,0 +1,10 @@
+name: r2d2
+version: 0.1.0
+description: R2-D2 capability observation — bounded post-tool/session observation plus a periodic heartbeat and a bounded client record into the r2d2 state dir.
+author: operator-guards
+kind: standalone
+provides_hooks:
+  - post_tool_call
+  - on_session_start
+  - on_session_end
+  - on_session_reset

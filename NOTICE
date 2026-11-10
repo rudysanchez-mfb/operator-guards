@@ -1,0 +1,32 @@
+operator-guards
+Copyright 2026 Rudy Sanchez / rudysanchez-mfb contributors
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+This product contains original software developed for the ED-209 and R2-D2
+operator-guard projects. It bundles no third-party source code. The runtime
+uses only the Python standard library; pytest is a test-only dependency and is
+not bundled.
+
+Provenance caveats:
+
+- The rulepacks are `documented-initial` plus documented protected-path
+  additions. They are NOT the absent 161-rule legacy ED-209 export and must not
+  be presented as full parity.
+- `src/operator_guards/ed209/source_policy.py` is a port of the live ED-209
+  provenance module. It is an optional, separate layer and is not wired into the
+  Hermes plugin's runtime rule loader.
+- The Linux observer supports a closed, documented predicate set.
+  `takeover_without_send` is unsupported and is reported as such.
+- Same-UID processes are not security-isolated from one another. These guards
+  are procedural defence-in-depth, not an OS security boundary.

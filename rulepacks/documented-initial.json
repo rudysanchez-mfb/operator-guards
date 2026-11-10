@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "_about": "documented-initial rulepack: ONLY rules whose exact wording is supplied by the handoff (2026-10-05-ed209-r2d2-handoff/ED-209-HANDOFF.md). This is NOT the migrated 161-rule DB — that export is absent from the bundle. The single documented rule below is the 'ed209 add' example at ED-209-HANDOFF.md §6 (~lines 175-178). It is reply-surface, so tool binding (the Hermes capability map) is not applicable; no tool rule exists in the handoff with exact wording, so none is invented.",
+  "reviewer": { "chain": ["copilot", "cursor"], "model": "gpt-5.4", "timeout_s": 50 },
+  "limits": { "max_blocks_per_session": 12, "max_reviewer_calls_per_session": 12 },
+  "rules": [
+    {
+      "id": "offload-new-phrase",
+      "surface": "reply",
+      "class": "offload",
+      "action": "escalate",
+      "pattern": "\\bI can do that if you want\\b",
+      "reason": "The final reply defers with '{match}'. {n_tools} tool calls ran this turn.",
+      "origin": "ED-209-HANDOFF.md §6 lines 175-178 (2026-10-05-ed209-r2d2-handoff/ED-209-HANDOFF.md 'ed209 add' example; documented origin: 2026-08-26 — Rudy: \"...\")",
+      "enabled": true,
+      "fixtures": {
+        "positive": ["I can do that if you want."],
+        "negative": ["I cannot do that.", "I can do that if you wanted to know."]
+      }
+    }
+  ]
+}

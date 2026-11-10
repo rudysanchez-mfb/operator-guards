@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "_about": "operator-guards protected-path rulepack (Task 14): NON-overridable deny rules protecting the entire grant/authz subtree and R2-D2/ED-209 durable state roots (directories included, regardless of trailing slash) from agent writes/deletes/renames. Provenance: plan §4 Task 14 (operator guards). Each rule is `overridable: false`, so the sourced `# ed209-override:` comment CANNOT lift it. These are additions with provenance to the documented-initial rulepack, not a replacement for the (absent) 161-rule legacy export.",
+  "reviewer": { "chain": ["copilot", "cursor"], "model": "gpt-5.4", "timeout_s": 50 },
+  "limits": { "max_blocks_per_session": 12, "max_reviewer_calls_per_session": 12 },
+  "rules": [
+    {
+      "id": "guard-grant-files",
+      "surface": "tool",
+      "class": "protected-path",
+      "action": "deny",
+      "pattern": "r2d2[/\\\\]grants\\b",
+      "reason": "Agent write to the R2-D2 grant/authz subtree (the grants directory or anything under it) is denied (kill authority is operator-only): {match}",
+      "origin": "plan §4 Task 14 (operator guards): grant/authz subtree is NON-overridable",
+      "tools": ["file_write", "file_patch", "shell", "execute_code"],
+      "overridable": false,
+      "enabled": true
+    },
+    {
+      "id": "guard-r2d2-state",
+      "surface": "tool",
+      "class": "protected-path",
+      "action": "deny",
+      "pattern": "r2d2[/\\\\](?:events\\b|incidents\\b|spool\\b|owned\\b|heartbeat\\b|clients\\b)",
+      "reason": "Agent write to R2-D2 durable state (a state root or anything under it) is denied: {match}",
+      "origin": "plan §4 Task 14 (operator guards): r2d2 state is NON-overridable",
+      "tools": ["file_write", "file_patch", "shell", "execute_code"],
+      "overridable": false,
+      "enabled": true
+    },
+    {
+      "id": "guard-ed209-state",
+      "surface": "tool",
+      "class": "protected-path",
+      "action": "deny",
+      "pattern": "ed209[/\\\\](?:rules\\.json|hits\\.db|state\\b)",
+      "reason": "Agent write to ED-209 rules/ledger/state (including the state directory) is denied: {match}",
+      "origin": "plan §4 Task 14 (operator guards): ed209 state is NON-overridable",
+      "tools": ["file_write", "file_patch", "shell", "execute_code"],
+      "overridable": false,
+      "enabled": true
+    }
+  ]
+}

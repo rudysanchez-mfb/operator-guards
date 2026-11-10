@@ -1,0 +1,20 @@
+[Unit]
+Description=R2-D2 capability-recovery supervisor (operator-guards)
+Documentation=file://__REPO__/docs/operations.md
+StartLimitIntervalSec=300
+StartLimitBurst=5
+
+[Service]
+Type=simple
+WorkingDirectory=__REPO__
+ExecStart=__PYTHON__ -m operator_guards.r2d2.supervisor --home __HOME__
+Environment=HOME=__USER_HOME__
+Environment=PATH=__VENV_BIN__:/usr/local/bin:/usr/bin:/bin
+Restart=on-failure
+RestartSec=30
+# Persistent state lives under the home passed above (r2d2/ subdir), SEPARATE
+# from the runtime IPC socket under /run/user/<uid>/hermes-guards. No resource
+# limits are set: none were measured (documented in docs/operations.md).
+
+[Install]
+WantedBy=default.target
