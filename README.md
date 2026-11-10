@@ -6,10 +6,30 @@ Standalone Python library and Hermes plugin pair for two operator guards:
 - **R2-D2** — bounded capability observation, durable incidents, and
   operator-authorized recovery.
 
-This is a **publication staging tree**, not a live deployment. It is a clean
-extraction of the coordinated ED-209/R2-D2 implementation with original code
-under Apache-2.0. No live profile, service, unit, database, transcript, or
-credential is included.
+```text
+┌─────────────────────────────────────────────────────────────┐
+│                       AI CODING AGENT                       │
+└──────────────┬──────────────────────────────▲───────────────┘
+               │ Tool Call                    │ Tool Result / Veto
+               ▼                              │
+     ┌──────────────────┐                     │
+     │  ED-209 ENGINE   │                     │
+     │  Pre-Tool Hook   │──[ Deny / Veto ]────┘
+     └─────────┬────────┘
+               │ Allowed
+               ▼
+     ┌──────────────────┐
+     │ TARGET SUBSYSTEM │ (Shell / Filesystem / MCP / Database)
+     └─────────┬────────┘
+               │
+               ▼
+     ┌──────────────────┐
+     │  R2-D2 OBSERVER  │ ──► [ Incident Log ]
+     │  Supervisor Loop │ ──► [ Grant Ledger ] ──► [ Remediate ]
+     └──────────────────┘
+```
+
+This is the standalone distribution of the coordinated ED-209 and R2-D2 operator guards under Apache-2.0. No live profile, service, unit, database, transcript, or credential is included.
 
 ## Status and scope
 
